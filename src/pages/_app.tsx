@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import "@/styles/globals.css";
 import InitAppWrapper from "@/wrappers/InitAppWrapper";
 import type { AppProps } from "next/app";
@@ -10,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <InitAppWrapper>
         <Toaster />
         <div className="h-screen overflow-y-scroll bg-slate-200">
-          {/* Header */}
+          <Header />
           <Component {...pageProps} />
         </div>
       </InitAppWrapper>
