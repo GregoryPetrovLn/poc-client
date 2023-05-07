@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Providers>
       <InitAppWrapper>
         <Toaster />
-        <div className="h-screen overflow-y-scroll bg-slate-200">
+        <div className="h-screen overflow-y-scroll bg-slate-100">
           <Header />
           <Component {...pageProps} />
         </div>
