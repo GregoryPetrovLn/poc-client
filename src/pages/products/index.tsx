@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import Table from "@/components/Table";
 import process from "process";
 
@@ -12,23 +13,23 @@ const Products = ({ data, count }: Props) => {
     { id: "price", label: "Price" },
     { id: "quantity", label: "Quantity" },
   ];
-  const onRowClickHandler = (id: number) => {};
+  const onRowClickHandler = (id: string) => {
+    console.log("Clicket->", id);
+  };
   return (
-    <div className="flex justify-center">
-      <div className="w-full md:w-1/2 p-6 bg-white rounded-lg shadow-lg overflow-x-auto mt-10">
-        <div className="text-2xl font-bold mb-4 flex justify-between items-center">
-          <span>Products</span>{" "}
-          <span className="text-sm font-semibold underline">
-            Total:<span className="text-gray-600">{count}</span>
-          </span>
-        </div>
-        <Table
-          tableRender={tableRender}
-          onRowClick={onRowClickHandler}
-          list={data}
-        />
+    <Card>
+      <div className="text-2xl font-bold mb-4 flex justify-between items-center">
+        <span>Products</span>{" "}
+        <span className="text-sm font-semibold underline">
+          Total:<span className="text-gray-600">{count}</span>
+        </span>
       </div>
-    </div>
+      <Table
+        tableRender={tableRender}
+        onRowClick={onRowClickHandler}
+        list={data}
+      />
+    </Card>
   );
 };
 

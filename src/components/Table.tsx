@@ -1,9 +1,11 @@
+import { FC } from "react";
+
 interface Props {
   tableRender: TableRenderer[];
-  onRowClick: (id: number) => void;
+  onRowClick: (id: string) => void;
   list: Product[] | null;
 }
-const Table = ({ tableRender, onRowClick, list }: Props) => {
+const Table: FC<Props> = ({ tableRender, onRowClick, list }) => {
   return (
     <table className="table-auto border-collapse border border-gray-400 w-full">
       <thead className="hidden md:table-header-group">
@@ -20,7 +22,13 @@ const Table = ({ tableRender, onRowClick, list }: Props) => {
       </thead>
       <tbody>
         {list?.map((item: Product, idx) => (
-          <tr className="even:bg-gray-100">
+          <tr
+            className="even:bg-gray-100 hover:bg-gray-200 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              onRowClick(item._id);
+            }}
+          >
             {tableRender.map(({ id }, dataIndex) => {
               type ObjectKey = keyof typeof item;
               return (
