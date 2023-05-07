@@ -2,7 +2,7 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 const Header = () => {
   return (
-    <div className="shadow-md w-screen h-auto px-5 py-3 flex justify-between items-center">
+    <div className="shadow-md w-screen h-auto px-5 py-3 flex justify-between items-center bg-white">
       <Link href={"/products"}>
         <div className="text-xl flex items-center">
           <HomeIcon className="w-7 h-7 mr-2" />
