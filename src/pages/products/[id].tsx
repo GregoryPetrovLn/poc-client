@@ -13,7 +13,7 @@ const Product: FC<Props> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
-    `${process.env.API_BASE_URL}/api/products/${context.query.id}`
+    `${process.env.API_BASE_URL}/products/${context.query.id}`
   );
   const { data } = await res.json();
 

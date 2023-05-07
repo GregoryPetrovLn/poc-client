@@ -36,7 +36,7 @@ const Products: FC<Props> = ({ data, count }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.API_BASE_URL}/api/products`);
+  const res = await fetch(`${process.env.API_BASE_URL}/products`);
   const { data, count } = await res.json();
 
   return {
