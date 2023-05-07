@@ -23,6 +23,7 @@ const Table: FC<Props> = ({ tableRender, onRowClick, list }) => {
       <tbody>
         {list?.map((item: Product, idx) => (
           <tr
+            key={`tr-${idx}`}
             className="even:bg-gray-100 hover:bg-gray-200 cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
