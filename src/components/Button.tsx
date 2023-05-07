@@ -1,10 +1,12 @@
+import { FC } from "react";
+
 interface Props {
   onClick: () => void;
   text: string;
   className?: string;
 }
 
-const Button = ({ onClick, text, className }: Props) => {
+const Button: FC<Props> = ({ onClick, text, className }) => {
   return (
     <div
       onClick={onClick}
