@@ -1,9 +1,10 @@
 type User = {
-  name: string;
+  name?: string;
   email: string;
-  token: string;
-  role: string;
-  _id: string;
+  token?: string;
+  role?: string;
+  password?: string;
+  _id?: string;
 };
 type Product = {
   name: string;
