@@ -8,7 +8,7 @@ interface Props {
 const Table: FC<Props> = ({ tableRender, onRowClick, list }) => {
   return (
     <table className="table-auto border-collapse border border-gray-400 w-full">
-      <thead className="hidden md:table-header-group">
+      <thead className="hidden md:table-header-group sticky top-0">
         <tr>
           {tableRender.map((item: TableRenderer, idx: number) => (
             <th
