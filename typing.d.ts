@@ -10,7 +10,7 @@ type Product = {
   description: string;
   price: number;
   quantity: number;
-  id: string;
+  _id: string;
 };
 
 type TableRenderer = {
