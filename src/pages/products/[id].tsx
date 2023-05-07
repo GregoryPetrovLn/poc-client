@@ -1,23 +1,25 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import { FC } from "react";
 
-const product = () => {
+interface Props {
+  data: Product | null;
+}
+const Product: FC<Props> = ({ data }) => {
   const router = useRouter();
+  console.log("single product", data);
   return <div>product page with id {router.query.id}</div>;
 };
 
-export const getServerSideProps: GetServerSideProps<any> = async (context) => {
-  console.log("getServerSideProps", context.query);
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/products?_limit=3"
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/api/products/${context.query.id}`
   );
+  const { data } = await res.json();
 
-  const data = await response.json();
   return {
-    props: {
-      data,
-    },
+    props: { data },
   };
 };
 
-export default product;
+export default Product;
