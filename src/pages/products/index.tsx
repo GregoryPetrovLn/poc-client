@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import Table from "@/components/Table";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import process from "process";
 import { FC } from "react";
@@ -25,6 +26,12 @@ const Products: FC<Props> = ({ data, count }) => {
         <span className="text-sm font-semibold underline">
           Total:<span className="text-gray-600">{count}</span>
         </span>
+        <button
+          className="text-sm font-semibold flex items-center hover:shadow-md px-5 py-2"
+          onClick={() => router.push("/products/create")}
+        >
+          Add new <PlusCircleIcon className="h-5 w-5 ml-2" />
+        </button>
       </div>
       <Table
         tableRender={tableRender}

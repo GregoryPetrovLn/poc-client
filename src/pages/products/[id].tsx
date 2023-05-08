@@ -17,7 +17,7 @@ const Product: FC<Props> = ({ data }) => {
   const { user } = useSelector(userSelector);
   const isAdmin = user?.role === "admin";
   const router = useRouter();
-
+  const { id } = router.query;
   const handleDelete = async () => {
     const notification = toast.loading("Deleting...");
     try {
@@ -34,6 +34,9 @@ const Product: FC<Props> = ({ data }) => {
       console.log(error);
       toast.error("Something went wrong", { id: notification });
     }
+  };
+  const handleEdit = () => {
+    router.push(`/products/${id}/edit`);
   };
 
   return (
@@ -72,7 +75,10 @@ const Product: FC<Props> = ({ data }) => {
                 <TrashIcon className="h-5 w-5" />
               </div>
 
-              <div className="text-blue-400 hover:text-blue-500 cursor-pointer flex items-center justify-end">
+              <div
+                onClick={handleEdit}
+                className="text-blue-400 hover:text-blue-500 cursor-pointer flex items-center justify-end"
+              >
                 Edit
                 <PencilSquareIcon className="h-5 w-5" />
               </div>
