@@ -4,9 +4,9 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { logoutFunction } from "../../store/slices/user/actions";
 import { userSelector } from "../../store/slices/user/userSlice";
 import { useDispatch } from "../../store/store";
-import { logoutFunction } from "../../store/slices/user/actions";
 
 const Header = () => {
   const router = useRouter();
