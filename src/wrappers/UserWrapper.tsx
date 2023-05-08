@@ -15,7 +15,7 @@ const UserWrapper = ({ children }: Props) => {
     if (user) {
       dispatch(setUser(user));
     }
-  }, []);
+  }, [dispatch]);
   return <>{children}</>;
 };
 

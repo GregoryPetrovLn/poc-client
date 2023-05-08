@@ -27,7 +27,9 @@ const Table: FC<Props> = ({ tableRender, onRowClick, list }) => {
             className="even:bg-gray-100 hover:bg-gray-200 cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
-              onRowClick(item._id);
+              if (item._id) {
+                onRowClick(item._id);
+              }
             }}
           >
             {tableRender.map(({ id }, dataIndex) => {

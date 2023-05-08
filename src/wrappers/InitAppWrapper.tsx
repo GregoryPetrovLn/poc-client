@@ -19,7 +19,7 @@ const InitAppWrapper = ({ children }: Props) => {
     } else {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   return <>{children}</>;
 };

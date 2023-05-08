@@ -5,7 +5,7 @@ import InitAppWrapper from "@/wrappers/InitAppWrapper";
 import UserWrapper from "@/wrappers/UserWrapper";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
-import { Providers } from "./provider";
+import Providers from "./provider";
 
 
 export default function App({ Component, pageProps }: AppProps) {

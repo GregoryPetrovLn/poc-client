@@ -4,6 +4,7 @@ import { store } from "../../store/store";
 interface Props {
   children: React.ReactNode;
 }
-export const Providers = ({ children }: Props) => {
-  return <Provider store={store}>{children}</Provider>;
-};
+ const Providers = ({ children }: Props) => {
+   return <Provider store={store}>{children}</Provider>;
+ };
+export default Providers;
