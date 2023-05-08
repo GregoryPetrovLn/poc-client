@@ -1,10 +1,12 @@
 import Card from "@/components/Card";
 import Input from "@/components/Input";
-import { loginFunction } from "@/service/auth";
+
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Yup from "yup";
+
+import { loginFunction } from "../../../store/slices/user/actions";
 import { useDispatch } from "../../../store/store";
 
 interface FormValues {
@@ -21,6 +23,7 @@ const initialValues = {
 
 const Login = () => {
   const dispatch = useDispatch();
+
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
 
@@ -42,7 +45,7 @@ const Login = () => {
       const onSuccess = () => {
         router.push("/products");
       };
-      loginFunction(values, onSuccess);
+      dispatch(loginFunction({ ...values, onSuccess }));
     } else {
     }
   };

@@ -1,20 +1,21 @@
-import { getUserInfo } from "@/service/auth";
-import { AUTH_TOKEN, USER_NAME } from "@/service/localStorageItems";
+import { USER } from "@/service/localStorageItems";
 import { getItemFromLocalStorage } from "@/service/utils";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { setUser } from "../../store/slices/user/actions";
+import { useDispatch } from "../../store/store";
 
 interface Props {
   children: React.ReactNode;
 }
 const UserWrapper = ({ children }: Props) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const token = getItemFromLocalStorage(AUTH_TOKEN);
-    const username = getItemFromLocalStorage(USER_NAME);
-    if (token && !username) {
-      getUserInfo();
+    const user = getItemFromLocalStorage(USER) as User;
+    if (user) {
+      dispatch(setUser(user));
     }
   }, []);
-
   return <>{children}</>;
 };
 

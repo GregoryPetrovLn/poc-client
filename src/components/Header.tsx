@@ -3,14 +3,19 @@ import { getItemFromLocalStorage } from "@/service/utils";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { userSelector } from "../../store/slices/user/userSlice";
+import { useDispatch } from "../../store/store";
+import { logoutFunction } from "../../store/slices/user/actions";
 
 const Header = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
+  const { user, loading } = useSelector(userSelector);
   const handleAuth = () => {
     const token = getItemFromLocalStorage(AUTH_TOKEN);
     if (token) {
-      //logout
+      dispatch(logoutFunction());
     } else {
       router.push("/login");
     }
@@ -28,7 +33,7 @@ const Header = () => {
           className="font-bold text-lg px-4 py-2 hover:bg-gray-300 rounded"
           onClick={handleAuth}
         >
-          {"Login"}
+          {loading ? "loading..." : user ? `Hello ${user.name}` : "Login"}
         </button>
       </div>
     </div>
