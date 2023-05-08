@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Yup from "yup";
 
-import { loginFunction } from "../../../store/slices/user/actions";
+import { authFunction } from "../../../store/slices/user/actions";
 import { useDispatch } from "../../../store/store";
 
 interface FormValues {
@@ -41,12 +41,13 @@ const Login = () => {
   });
 
   const handleSubmit = (values: FormValues) => {
+    const onSuccess = () => {
+      router.push("/products");
+    };
     if (isLogin) {
-      const onSuccess = () => {
-        router.push("/products");
-      };
-      dispatch(loginFunction({ ...values, onSuccess }));
+      dispatch(authFunction({ ...values, onSuccess }));
     } else {
+      dispatch(authFunction({ ...values, onSuccess, isRegister: true }));
     }
   };
 

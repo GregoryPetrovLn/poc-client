@@ -2,21 +2,38 @@ import { AUTH_TOKEN, USER } from "@/service/localStorageItems";
 import { setItemToLocalStorage } from "@/service/utils";
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface LoginProps {
+interface LoginProps extends User {
   onSuccess: () => void;
-  email: string;
-  password: string;
+  isRegister?: boolean;
 }
-export const loginFunction = createAsyncThunk(
-  "user/login",
-  async ({ email, password, onSuccess }: LoginProps) => {
+
+export const authFunction = createAsyncThunk(
+  "user/authenticate",
+  async ({
+    email,
+    password,
+    name,
+    onSuccess,
+    isRegister = false,
+  }: LoginProps) => {
     try {
-      const response = await fetch(`${process.env.API_BASE_URL}/auth/login`, {
+      let url = "";
+      let requestBody = {};
+
+      if (isRegister) {
+        url = `${process.env.API_BASE_URL}/auth/register`;
+        requestBody = { email, password, name };
+      } else {
+        url = `${process.env.API_BASE_URL}/auth/login`;
+        requestBody = { email, password };
+      }
+
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(requestBody),
       });
 
       const { token, user } = await response.json();
@@ -31,6 +48,8 @@ export const loginFunction = createAsyncThunk(
     }
   }
 );
+
+
 export const logoutFunction = createAsyncThunk("user/logout", async () => {
   try {
     await fetch(`${process.env.API_BASE_URL}/auth/logout`, {

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { loginFunction, logoutFunction, setUser } from "./actions";
+import { authFunction, logoutFunction, setUser } from "./actions";
 
 export interface UserInitialState {
   user: null | User;
@@ -22,14 +22,14 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginFunction.fulfilled, (state, { payload }) => {
+      .addCase(authFunction.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.loading = false;
       })
-      .addCase(loginFunction.pending, (state) => {
+      .addCase(authFunction.pending, (state) => {
         state.loading = true;
       })
-      .addCase(loginFunction.rejected, (state, {}) => {
+      .addCase(authFunction.rejected, (state, {}) => {
         state.loading = false;
         state.user = null;
       })
