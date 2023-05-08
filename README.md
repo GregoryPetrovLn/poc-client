@@ -20,3 +20,24 @@ Responsive Design: The UI is designed to be responsive, ensuring optimal user ex
       <img src="https://firebasestorage.googleapis.com/v0/b/pet-projects-db.appspot.com/o/Portfolio%20previews%2FPOC%2FScreenshot%202023-05-08%20at%2013.48.30.png?alt=media&token=85d7cc30-2e8d-4e4a-b9e7-0e83e7aae810" width="200px"</img> 
      <img src="https://firebasestorage.googleapis.com/v0/b/pet-projects-db.appspot.com/o/Portfolio%20previews%2FPOC%2FScreenshot%202023-05-08%20at%2013.48.37.png?alt=media&token=9f35fb98-071d-4ee8-ada9-a67f2ef5272f" width="200px"</img> 
 </div>
+
+## Getting Started:
+
+```
+    git clone https://github.com/GregoryPetrovLn/poc-client
+    cd poc-client
+```
+Create .env file
+```
+    API_BASE_URL=http://localhost:3300/api
+```
+```
+    npm run dev
+```
+
+- Clone the repository and install the necessary dependencies.
+- Configure the required environment variables, such as authentication credentials and API endpoints.
+- Run the development server to start the application locally.
+- Access the application through the provided localhost address.
+- Use the provided login or registration functionality to authenticate as a user.
+- Explore the product list and interact with the CRUD operations to manage the products.
