@@ -47,7 +47,7 @@ const Login = () => {
       router.push("/products");
     };
     const role = values.isAdmin ? "admin" : "user";
-
+    values.email = values.email.toLowerCase().trim();
     if (isLogin) {
       dispatch(authFunction({ ...values, onSuccess }));
     } else {
