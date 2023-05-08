@@ -1,5 +1,5 @@
 # POC Client - Full-Stack Developer Task
-(Go to deployed app)[http://18.234.166.225:3000/]
+[Go to deployed app](http://18.234.166.225:3000/)
 
 This project is a React application built with TypeScript, Next.js, and Tailwind CSS. It showcases user authentication functionality, allowing users to log in or register as new users. Additionally, the application demonstrates CRUD (Create, Read, Update, Delete) operations by providing a list of products that users can manipulate.
 
