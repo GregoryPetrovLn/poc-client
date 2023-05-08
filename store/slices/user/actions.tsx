@@ -13,6 +13,7 @@ export const authFunction = createAsyncThunk(
     email,
     password,
     name,
+    role,
     onSuccess,
     isRegister = false,
   }: LoginProps) => {
@@ -22,7 +23,7 @@ export const authFunction = createAsyncThunk(
 
       if (isRegister) {
         url = `${process.env.API_BASE_URL}/auth/register`;
-        requestBody = { email, password, name };
+        requestBody = { email, password, name, role };
       } else {
         url = `${process.env.API_BASE_URL}/auth/login`;
         requestBody = { email, password };

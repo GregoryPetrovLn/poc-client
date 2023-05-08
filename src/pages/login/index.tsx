@@ -13,12 +13,14 @@ interface FormValues {
   name: string;
   email: string;
   password: string;
+  isAdmin: boolean;
 }
 
 const initialValues = {
   name: "",
   email: "",
   password: "",
+  isAdmin: false,
 };
 
 const Login = () => {
@@ -44,10 +46,12 @@ const Login = () => {
     const onSuccess = () => {
       router.push("/products");
     };
+    const role = values.isAdmin ? "admin" : "user";
+
     if (isLogin) {
       dispatch(authFunction({ ...values, onSuccess }));
     } else {
-      dispatch(authFunction({ ...values, onSuccess, isRegister: true }));
+      dispatch(authFunction({ ...values, role, onSuccess, isRegister: true }));
     }
   };
 
@@ -87,6 +91,18 @@ const Login = () => {
               errors={errors}
               touched={touched}
             />
+
+            {!isLogin && (
+              <Input
+                name="isAdmin"
+                type="checkbox"
+                label="Create user as admin (ONLY FOR DEMONSTRATION PURPOSES)"
+                id="isAdmin"
+                errors={errors}
+                touched={touched}
+                labelClass="text-xs font-semibold text-blue-300 text-center"
+              />
+            )}
 
             <button
               type="submit"

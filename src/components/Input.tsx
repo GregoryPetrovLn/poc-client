@@ -8,12 +8,24 @@ interface Props {
   id: string;
   errors: any;
   touched: any;
+  labelClass?: string;
 }
 
-const Input: FC<Props> = ({ name, type, label, id, errors, touched }) => {
+const Input: FC<Props> = ({
+  name,
+  type,
+  label,
+  id,
+  errors,
+  touched,
+  labelClass,
+}) => {
   return (
     <div className="mb-4">
-      <label className="block text-gray-700 font-bold mb-2" htmlFor={id}>
+      <label
+        className={`block text-gray-700 font-bold mb-2 ${labelClass}`}
+        htmlFor={id}
+      >
         {label}
       </label>
 
