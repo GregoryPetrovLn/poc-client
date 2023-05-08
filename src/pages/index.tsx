@@ -14,7 +14,7 @@ const navLinks: NavLink[] = [
     title: "GitHub",
   },
   {
-    href: "",
+    href: "https://github.com/GregoryPetrovLn/poc-client",
     title: "Project Repository",
   },
   {
