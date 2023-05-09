@@ -30,7 +30,7 @@ Responsive Design: The UI is designed to be responsive, ensuring optimal user ex
 ```
 Create .env file
 ```
-    API_BASE_URL=http://localhost:3300/api
+    API_BASE_URL=http://54.172.120.12:3300/api/products
 ```
 Run you application
 ```
